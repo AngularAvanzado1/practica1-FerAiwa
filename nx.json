@@ -7,5 +7,24 @@
     "tslint.json": "*",
     "nx.json": "*"
   },
-  "projects": {}
+  "projects": {
+    "myapp-e2e": {
+      "tags": []
+    },
+    "myapp": {
+      "tags": []
+    },
+    "shared-data": {
+      "tags": []
+    },
+    "shared-domain": {
+      "tags": []
+    },
+    "shared-ui": {
+      "tags": []
+    },
+    "regions-store": {
+      "tags": []
+    }
+  }
 }

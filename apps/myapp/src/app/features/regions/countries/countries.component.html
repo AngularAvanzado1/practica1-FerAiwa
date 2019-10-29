@@ -1,0 +1,12 @@
+<h1>Choose a Country</h1>
+<section style="display:flex; flex-flow: row wrap; margin: 0 auto; justify-content: center;">
+  <ab-ui-region-card *ngFor="let country of countries$ | async"
+                     [routerLink]="['/country', country.id]"
+                     [name]="country.name"
+                     style="width: 200px; padding: 1rem; margin: .5rem; background-color: whitesmoke; border-radius: 8px;">
+    <img src="https://www.countryflags.io/{{country.iso2Code}}/flat/64.png">
+
+  </ab-ui-region-card>
+
+  <router-outlet></router-outlet>
+</section>

@@ -1,0 +1,33 @@
+<ng-container *ngIf="country$ | async as country">
+  <p>
+    <span [routerLink]="['/region', country.region]">{{country.region}}</span> >>
+    <span>{{country.name}}</span>
+  </p>
+  <div style="display: flex; justify-content: space-between; max-width: 550px;">
+    <h1 style="flex: 1">{{country.name}}</h1>
+    <figure>
+      <img alt="{{country.name}} flag"
+           src="https://www.countryflags.io/{{country.iso2Code}}/flat/32.png">
+    </figure>
+  </div>
+
+  <div class="country-card">
+    <div class="map">
+      <iframe width="250"
+              height="250"
+              frameborder="0"
+              style="border:0; border-radius:50%"
+              [src]="getGoogleMapsUrl(country)">
+      </iframe>
+    </div>
+    <div class="country-card-data">
+      <div class="text">
+        <h2>Country Details:</h2>
+        <p> Capital: {{country.capitalCity}}</p>
+        <p>Income Level: {{country.incomeLevel.value}}</p>
+        <p>Lending Type: {{country.lendingType.value}}</p>
+        <p>Capital location: {{country.latitude}}, {{country.longitude}}</p>
+      </div>
+    </div>
+  </div>
+</ng-container>
