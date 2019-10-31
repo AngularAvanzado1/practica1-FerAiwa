@@ -32,6 +32,9 @@
       ],
       "@a-boss/regions-store": [
         "libs/regions-store/src/index.ts"
+      ],
+      "@a-boss/region-quiz": [
+        "libs/region-quiz/src/index.ts"
       ]
     }
   },

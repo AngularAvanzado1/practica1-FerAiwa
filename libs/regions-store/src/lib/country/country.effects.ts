@@ -9,6 +9,7 @@ import { LocalStorageEffects } from '../region-store-localstorage.effects';
 import { CountriesState, countriesFeatureKey } from './country.reducer';
 import * as CountryActions from './country.actions';
 import * as CountrySelectors from './country.selectors';
+import { RegionSelectors } from '../region';
 
 
 @Injectable()
@@ -29,7 +30,7 @@ export class CountryEffects extends LocalStorageEffects<CountriesState> {
       }
       )
     )
-  )
+  );
 
   public loadLendingTypes$ = createEffect(() =>
     this.actions$.pipe(

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Actions } from '@ngrx/effects';
-import { Observable } from 'rxjs';
-import { take, skipWhile } from 'rxjs/operators';
+import { Observable, forkJoin } from 'rxjs';
+import { take, skipWhile, flatMap, tap } from 'rxjs/operators';
 
 import { Region, Country } from '@a-boss/domain';
 import { AppState } from './regions-store.module';
@@ -47,5 +47,17 @@ export class RegionFacadeService {
     )
   }
 
+  getAllCountries = (): Observable<Country[]> =>
+    this.getPrimaryRegions()
+      .pipe(
+        flatMap(regions =>
+          forkJoin(...regions.map(({ code }) => this.getRegionCountries(code))),
+        )
+      )
 
 }
+
+
+
+
+

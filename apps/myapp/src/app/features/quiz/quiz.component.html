@@ -1,0 +1,18 @@
+<p>quiz works!</p>
+<ng-container *ngIf="(quizService.questions$ | async) as questions">
+  <div *ngFor="let question of questions">
+    <ng-container *ngIf="question.type === 'flag'">
+      <h1>Which country is represented by this flag?</h1>
+      <img style="display:inline; margin: 0 auto"
+           src="https://www.countryflags.io/{{question.subject}}/flat/32.png">
+    </ng-container>
+
+    <h1 *ngIf="question.type != 'flag'">{{question.question}}</h1>
+    <ol>
+      <li *ngFor="let choice of question.choices; let i=index"
+          (click)="checkValidAnswer(question, i, $event)">
+        {{choice}}
+      </li>
+    </ol>
+  </div>
+</ng-container>

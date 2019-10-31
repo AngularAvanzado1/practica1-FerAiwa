@@ -228,6 +228,33 @@
         }
       },
       "schematics": {}
+    },
+    "region-quiz": {
+      "projectType": "library",
+      "root": "libs/region-quiz",
+      "sourceRoot": "libs/region-quiz/src",
+      "prefix": "angular-boss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/region-quiz/tsconfig.lib.json",
+              "libs/region-quiz/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/region-quiz/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/region-quiz/jest.config.js",
+            "tsConfig": "libs/region-quiz/tsconfig.spec.json",
+            "setupFile": "libs/region-quiz/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {}
     }
   },
   "cli": {

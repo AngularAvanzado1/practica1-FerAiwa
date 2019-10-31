@@ -25,6 +25,9 @@
     },
     "regions-store": {
       "tags": []
+    },
+    "region-quiz": {
+      "tags": []
     }
   }
 }

@@ -9,7 +9,7 @@ import { MainRegionsResolver } from './core/resolvers/main-regions.resolver';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'region',
+    redirectTo: 'quiz',
     pathMatch: 'full',
   },
   {
@@ -25,6 +25,10 @@ const routes: Routes = [
     resolve: {
       country: CountryResolver,
     },
+  },
+  {
+    path: 'quiz',
+    loadChildren: () => import('./features/quiz/quiz.module').then(m => m.QuizModule)
   }
 ];
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
-import { RegionFacadeService } from '@a-boss/regions-store';
 import { Country } from '@a-boss/domain';
+import { RegionFacadeService } from '@a-boss/regions-store';
 
 
 @Injectable({
