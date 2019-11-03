@@ -1,0 +1,22 @@
+main {
+  display: flex;
+  height: 100%;
+  overflow-y: hidden;
+  justify-content: flex-end;
+  padding: 0;
+  background-image: url("../assets/index-bg-globe-ground.jpg");
+  background-position: right;
+  background-color: black;
+  background-size: cover;
+  max-width: 1400px;
+}
+/*     .flex-hero {
+      flex:2;
+    } */
+
+    @media(min-width: 1400px) {
+      main {
+        margin: 0 auto;
+
+      }
+    }

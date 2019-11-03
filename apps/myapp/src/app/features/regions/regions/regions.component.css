@@ -1,0 +1,7 @@
+:host {
+  display: flex;
+  height: 100vh;
+  flex-flow: column wrap;
+  align-items: left ;
+  overflow:hidden;
+}

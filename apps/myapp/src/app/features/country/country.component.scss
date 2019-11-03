@@ -1,4 +1,17 @@
+:host {
+  display: block;
+}
+:host > * {
+  margin: 0 auto;
+}
+#breadcumb {
+  color: white;
+  margin-top: 1rem;
+  font-size: 1.10rem;
+  background-color: rgba(0, 0, 0, 0.5);
+}
 .country-card {
+  padding: 1rem;
   max-width: 550px;
   display: flex;
   background-color: whitesmoke;

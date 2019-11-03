@@ -24,7 +24,8 @@
                 "glob": "**/*",
                 "input": "./libs/shared/ui/src/assets",
                 "output": "./assets"
-              }
+              },
+              "apps/myapp/src/manifest.webmanifest"
             ],
             "styles": ["apps/myapp/src/styles.css"],
             "scripts": []
@@ -57,7 +58,9 @@
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
-              ]
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "apps/myapp/ngsw-config.json"
             }
           }
         },

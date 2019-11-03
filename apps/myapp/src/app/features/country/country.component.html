@@ -1,13 +1,14 @@
 <ng-container *ngIf="country$ | async as country">
-  <p>
+  <p id="breadcumb">
     <span [routerLink]="['/region', country.region]">{{country.region}}</span> >>
     <span>{{country.name}}</span>
   </p>
   <div style="display: flex; justify-content: space-between; max-width: 550px;">
-    <h1 style="flex: 1">{{country.name}}</h1>
+    <h1 style="flex: 1; color:  white;">{{country.name}}</h1>
     <figure>
       <img alt="{{country.name}} flag"
-           src="https://www.countryflags.io/{{country.iso2Code}}/flat/32.png">
+           style="scale:50%"
+           src="https://www.countryflags.io/{{country.iso2Code}}/flat/64.png">
     </figure>
   </div>
 

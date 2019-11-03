@@ -3,5 +3,19 @@ ab-ui-region-card h1 {
   font-size: 1.5rem;
 }
 body {
-  font-family: sans-serif;
+  height: 100vh;
+  font-family: 'Roboto Condensed', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: black;
+
+}
+h1 {
+  text-transform: capitalize;
+}
+
+body {
+
+/*   background-repeat: no-repeat;
+  background-position-x: -550px; */
 }

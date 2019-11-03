@@ -1,9 +1,13 @@
-<h1>Choose a Region</h1>
-<section style="display:flex; flex-flow: row wrap; margin: 0 auto; justify-content: center;">
+<section style="display:flex; flex-flow: row wrap; justify-content: center; width: 100%">
   <ab-ui-region-card *ngFor="let region of regions$ | async"
                      [routerLink]="[region.code]"
                      [name]="region.name"
-                     style="width: 200px; padding: 1rem; margin: .5rem; background-color: whitesmoke; border-radius: 8px;">
+                     style="width: 200px;
+                      padding: .25rem; margin: .25rem .5rem; background-color: whitesmoke; border-radius: 8px;
+                      text-align: center; vertical-align: center;">
   </ab-ui-region-card>
 </section>
-<router-outlet></router-outlet>
+
+<div style="display:flex; flex-flow: row wrap; justify-content: center; width: 100%; ">
+  <router-outlet></router-outlet>
+</div>

@@ -19,8 +19,7 @@ const routes: Routes = [
         resolve: {
           countries: RegionCountriesResolver
         },
-      },
-
+      }
     ]
   }
 ];

@@ -1,0 +1,57 @@
+{
+  "$schema": "../../node_modules/@angular/service-worker/config/schema.json",
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "coreapp",
+      "installMode": "prefetch",
+      "resources": {
+        "files": [
+          "/favicon.ico",
+          "/index.html",
+          "/manifest.webmanifest",
+          "/*.css",
+          "/common*.js",
+          "main*.js",
+          "ngsw*.js",
+          "*worker.js",
+          "*polyfills*.js",
+          "/runtime*.js"
+        ]
+      }
+    },
+    {
+      "name": "lazy-app",
+      "installMode": "lazy",
+      "resources": {
+        "files": [
+          "*/*.js"
+        ]
+      }
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": [
+          "/assets/**",
+          "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
+        ]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "regions-api",
+      "urls": [
+        "https://api.worldbank.org/v2/*"
+      ],
+      "cacheConfig": {
+        "strategy": "performance",
+        "maxAge": "7d",
+        "maxSize": 10
+      }
+    }
+  ]
+}
