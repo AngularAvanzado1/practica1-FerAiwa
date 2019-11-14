@@ -1,30 +1,33 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { countriesFeatureKey, CountriesState } from './country.reducer';
+import { countryFeatureKey, CountryState } from './country.reducer';
 
-export const countriesState = createFeatureSelector<CountriesState>(
-  countriesFeatureKey
+export const countriesState = createFeatureSelector<CountryState>(
+  countryFeatureKey
 );
 
 export const getCountries = createSelector(
   countriesState,
-  ({ countries }: CountriesState) => countries
+  (state => state.countries)
 );
 
 export const getCountry = createSelector(
   countriesState,
-  ({ lendingTypes, incomeLevels, countries }: CountriesState, props: { id: string }) => {
+  (state: CountryState, props: { id: string }) => {
+    const { lendingTypes, incomeLevels, countries } = state;
     const country = countries.find(ct => ct.id === props.id);
+
+    if (!country) return undefined;
 
     return {
       ...country,
-      lendingType: lendingTypes.find(type => type.id === country.lendingType),
-      incomeLevel: incomeLevels.find(type => type.id === country.incomeLevel)
+      lendingType: lendingTypes.find(type => type.id === country.lendingType).value,
+      incomeLevel: incomeLevels.find(type => type.id === country.incomeLevel).value,
     }
   }
 );
 
 export const getRegionCountries = createSelector(
   countriesState,
-  ({ countries }: CountriesState, code: string) =>
+  ({ countries }: CountryState, code: string) =>
     countries.filter(country => country.region === code)
 );

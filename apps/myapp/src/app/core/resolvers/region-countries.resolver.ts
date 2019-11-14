@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
 import { Country } from '@a-boss/domain';
 import { RegionFacadeService } from '@a-boss/regions-store';
+import { take } from 'rxjs/operators';
 
 
 @Injectable({
@@ -15,6 +16,6 @@ export class RegionCountriesResolver implements Resolve<Country[]> {
     state: import('@angular/router').RouterStateSnapshot
   ) {
     const code = route.paramMap.get('code');
-    return this.regionService.getRegionCountries(code)
+    return this.regionService.getRegionCountries(code).pipe(take(1))
   }
 }

@@ -6,7 +6,8 @@ main {
   padding: 0;
   background-image: url("../assets/index-bg-globe-ground.jpg");
   background-position: right;
-  background-color: black;
+  background-blend-mode: luminosity;
+  background-color: #ffffff87;
   background-size: cover;
   max-width: 1400px;
 }

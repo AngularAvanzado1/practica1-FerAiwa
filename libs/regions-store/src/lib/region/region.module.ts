@@ -9,7 +9,7 @@ import * as fromRegionStore from './region.reducer';
   imports: [
     CommonModule,
     StoreModule.forFeature(
-      fromRegionStore.regionsFeatureKey,
+      fromRegionStore.regionFeatureKey,
       fromRegionStore.reducer,
       //{ metaReducers: fromRegionsStore.regionMetaReducers }
     ),

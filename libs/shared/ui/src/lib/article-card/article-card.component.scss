@@ -1,21 +1,14 @@
 :host {
+  background-color: white;
   display: block;
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 3px solid lightgrey;
+  padding-top: 0;
   margin: 0 auto;
 }
 
-
-nav {
-  color: white;
-  margin-top: 1rem;
-  font-size: 1.10rem;
-  background-color: rgba(0, 0, 0, 0.5);
-  cursor: pointer;
-  margin-bottom: 3rem;
-}
-h2 {
-  font-size: 1.2rem;
-}
-/* .main {
+.main {
   padding: 1rem;
   max-width: 550px;
   display: flex;
@@ -29,8 +22,15 @@ h2 {
     padding: 1rem;
     justify-content: space-between;
     border-radius: 3rem;
+    .art-image {
+      width: 250px;
+      height: 250px;
+      border:0;
+      border-radius:50%
+    }
   }
 }
+
 h1 {
   flex: 1;
   color:  white;
@@ -41,8 +41,10 @@ header {
   display: flex;
   justify-content: space-between;
   max-width: 550px;
-  img {
-    height:80%
-  }
 }
-*/
+figure {
+  margin:0; padding:0;
+}
+      .icon {
+        height:80%
+      }

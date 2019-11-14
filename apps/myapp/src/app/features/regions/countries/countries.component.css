@@ -13,19 +13,41 @@
   padding: 1rem;
 }
 
-section::-webkit-scrollbar {
+main {
+  display:flex;
+  width: 100%;
+  flex-flow: row wrap;
+  justify-content: left;
+  align-content: start;
+  background-color: rgba(245, 245, 245, 0.158);
+  border-bottom-left-radius: 2rem;
+  border-top-left-radius: 2rem;
+  max-height: 550px;
+  min-height: 550px;
+  overflow-y: scroll;
+  padding-left: 2.5rem;
+  box-sizing: border-box;
+}
+
+main::-webkit-scrollbar {
   width: 6px;
   background-color: rgb(29, 28, 27);
   border-radius: 8px;
 }
 
-
-
-section::-webkit-scrollbar-thumb {
+main::-webkit-scrollbar-thumb {
   background-color: #8f8484;
   border-radius: 8px;
 }
 h1 {
   border-bottom: 1px dotted lightgrey;
   color: white;
+}
+
+.flag-card {
+  width: 100px;
+  padding: 0 1rem;
+  margin: .25rem .25rem; ;
+  border-radius: 8px;
+  cursor: pointer;
 }

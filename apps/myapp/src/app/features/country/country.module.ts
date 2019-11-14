@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CountryComponent } from './country.component';
 import { Routes, RouterModule } from '@angular/router';
+import { UiModule } from '@a-boss/ui';
 
 const routes: Routes = [
   {
@@ -15,6 +16,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    UiModule,
   ]
 })
 export class CountryModule { }

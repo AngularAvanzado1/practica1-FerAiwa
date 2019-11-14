@@ -1,6 +1,5 @@
 import { createAction, props } from '@ngrx/store';
 import { Country, CountryDetail } from '@a-boss/domain';
-import { CountriesState } from './country.reducer';
 
 const loadCountry = {
   start: createAction(
@@ -38,18 +37,11 @@ const loadLendingTypes = {
   )
 };
 
-export const rehydrateFeatureState = {
-  start: createAction(
-    '[Countries] Rehydrate feature State'
-  ),
-  success: createAction(
-    '[Countries] Rehydrate Feature State ✔', props<{ storedState: CountriesState }>()
-  )
-}
-
 export const addCountries = createAction(
-  '[Countries] Added countries', props<{ countries: Country[] }>()
-);
+  '[Countries] Add Countries',
+  props<{ countries: Country[] }>()
+)
+
 
 export const loaders = {
   country: loadCountry,

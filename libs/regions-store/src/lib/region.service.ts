@@ -1,51 +1,54 @@
 import { Injectable } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { Actions } from '@ngrx/effects';
-import { Observable } from 'rxjs';
-import { take, skipWhile } from 'rxjs/operators';
-
+import { Observable, zip } from 'rxjs';
+import { skipWhile, tap, map } from 'rxjs/operators';
 import { Region, Country } from '@a-boss/domain';
 import { AppState } from './regions-store.module';
-import { CountrySelectors, CountryActions } from './country';
+import { CountryActions, CountrySelectors } from './country';
 import { RegionSelectors, RegionActions } from './region';
+import * as AppSelectors from './region-store.selectors';
 
 @Injectable()
 export class RegionFacadeService {
 
-  constructor(private actions$: Actions, private appStore: Store<AppState>) {
-    this.appStore.dispatch(CountryActions.loaders.incomeLevels.start());
-    this.appStore.dispatch(CountryActions.loaders.lendingTypes.start());
+  constructor(private store: Store<AppState>) {
+    this.store.dispatch(CountryActions.loaders.incomeLevels.start());
+    this.store.dispatch(CountryActions.loaders.lendingTypes.start());
   }
 
-  getPrimaryRegions(): Observable<Region[]> {
-    this.appStore.dispatch(RegionActions.loaders.regions.start())
+  public getCountry = (id: string): Observable<Country> =>
+    this.store.pipe(
+      select(AppSelectors.getCountryExtended, { id }),
+      tap(country =>
+        country || this.store.dispatch(CountryActions.loaders.country.start({ id }))
+      ),
+      skipWhile(country => !country)
+    );
 
-    return this.appStore.pipe(
+
+  public getPrimaryRegions = (): Observable<Region[]> =>
+    this.store.pipe(
       select(RegionSelectors.getRegions),
-      skipWhile(regionMap => !regionMap.length),
-      take(1)
-    )
-  }
+      tap(regions =>
+        regions.length || this.store.dispatch(RegionActions.loaders.regions.start())
+      ),
+      skipWhile(regions => !regions.length)
+    );
 
-  getRegionCountries(code: string): Observable<Country[]> {
-    this.appStore.dispatch(RegionActions.loadRegionCountries.start({ code }));
 
-    return this.appStore.pipe(
-      select(CountrySelectors.getRegionCountries, code),
-      skipWhile(countries => !countries.length),
-      take(1)
-    )
-  }
-
-  getCountry(id: string): Observable<Country> {
-    this.appStore.dispatch(CountryActions.loaders.country.start({ id }))
-
-    return this.appStore.pipe(
-      select(CountrySelectors.getCountry, { id }),
-      skipWhile(country => !country),
-      take(1)
-    )
-  }
-
+  public getRegionCountries = (code: string) =>
+    zip(
+      this.store.select(RegionSelectors.getLoadedRegions),
+      this.store.select(CountrySelectors.getCountries),
+    ).pipe(
+      map(([loadedRegions, countries]) => {
+        if (loadedRegions.includes(code)) {
+          return countries.filter(ct => ct.region === code)
+        }
+        this.store.dispatch(RegionActions.loadRegionCountries.start({ code }));
+        return null
+      }),
+      skipWhile(countries => !countries)
+    );
 
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { Region, Country, CountryDetail } from '@a-boss/domain';
 
 @Injectable()
@@ -27,7 +27,12 @@ export class WorldRegionsDataService {
     this.getAllRegions().pipe(this.filterPrimaryRegions);
 
   public getCountry = (id: string): Observable<Country> =>
-    this.get(`${this.apiUrl}/country/${id}`);
+    this.get(`${this.apiUrl}/country/${id}`)
+      .pipe(
+        map((res) => this.mapIDsFromNestedEntities(res)[0])
+      )
+
+
 
   public getRegionCountries = (code: string): Observable<Country[]> =>
     this.get(`${this.apiUrl}/region/${code}/country`)
@@ -63,20 +68,21 @@ export class WorldRegionsDataService {
     this.params = this.params.set('per_page', quant.toString());
   }
 
-  mapIDsFromNestedEntities(collection: object[], primaryKey = 'id'): any {
-    const isNestedEntity = (object: any) => object[primaryKey];
+  mapIDsFromNestedEntities(collection: object[], entityKey = 'id'): any {
+    const isNestedEntity = (object: any) => object[entityKey];
 
-    const mappedCollection = collection
-      .map(item =>
-        Object
-          .keys(item)
-          .reduce((acc, key: string) => (
-            {
-              ...acc,
-              [key]: isNestedEntity(item[key]) ? item[key][primaryKey] : item[key]
-            }
-          ), {})
-      )
+    const mappedCollection = collection.map(item =>
+      Object
+        .keys(item)
+        .reduce((mappedItem, key: string) => {
+          if (key === 'adminregion') return mappedItem
+
+          return {
+            ...mappedItem,
+            [key]: isNestedEntity(item[key]) ? item[key][entityKey] : item[key]
+          }
+        }, {})
+    )
 
     return mappedCollection;
   }

@@ -1,47 +1,42 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { Country, CountryDetail } from '@a-boss/domain';
-import * as CountriesActions from './country.actions';
-import * as CountriesReducers from './country.action-reducers';
+import * as CountryActions from './country.actions';
+import * as CountryReducers from './country.action-reducers';
 
-export const countriesFeatureKey = 'country';
+export const countryFeatureKey = 'country';
 
-export interface CountriesState {
+export interface CountryState {
   countries: Country[];
   incomeLevels: CountryDetail[];
   lendingTypes: CountryDetail[];
 }
 
-export const initialState: CountriesState = {
+export const countryInitialState: CountryState = {
   countries: [],
   incomeLevels: [],
   lendingTypes: [],
 };
 
-const countriesReducer = createReducer(
-  initialState,
+const countryReducer = createReducer(
+  countryInitialState,
   on(
-    CountriesActions.rehydrateFeatureState.success,
-    CountriesReducers.setCountryState
+    CountryActions.loaders.country.success,
+    CountryReducers.addCountry
   ),
   on(
-    CountriesActions.loaders.country.success,
-    CountriesReducers.addCountry
+    CountryActions.loaders.lendingTypes.success,
+    CountryReducers.setLendingTypes
   ),
   on(
-    CountriesActions.loaders.lendingTypes.success,
-    CountriesReducers.setLendingTypes
+    CountryActions.loaders.incomeLevels.success,
+    CountryReducers.setIncomeLevels
   ),
   on(
-    CountriesActions.loaders.incomeLevels.success,
-    CountriesReducers.setIncomeLevels
-  ),
-  on(
-    CountriesActions.addCountries,
-    CountriesReducers.addCountries
-  ),
+    CountryActions.addCountries,
+    CountryReducers.addCountries
+  )
 );
 
-
-export function reducer(state: CountriesState | undefined, action: Action) {
-  return countriesReducer(state, action);
+export function reducer(state: CountryState | undefined, action: Action) {
+  return countryReducer(state, action);
 }

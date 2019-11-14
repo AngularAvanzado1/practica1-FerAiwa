@@ -1,9 +1,8 @@
-import { getGreeting } from '../support/app.po';
+import { getRegions, visitHome, getCountries, getCountry } from '../support/app.po';
 
-describe('myapp', () => {
-  beforeEach(() => cy.visit('/'));
-
-  it('should display welcome message', () => {
-    getGreeting().contains('Welcome to myapp!');
-  });
-});
+/**
+ * Investigar:
+ * [x]1. Cómo hacer "al pulsar X navega a Y"
+ * [] 2. Cómo forzar .visit dinámico.
+ * ??? .should.notbe.empty me lo pasa como bueno cuando no debería...
+ */

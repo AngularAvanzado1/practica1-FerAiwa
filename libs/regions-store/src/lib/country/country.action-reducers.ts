@@ -1,41 +1,38 @@
-import { CountriesState } from './country.reducer';
+import { CountryState } from './country.reducer';
 
-export function setCountryState(state: CountriesState, { storedState }) {
-  const { countries, lendingTypes, incomeLevels } = storedState;
-
-  return {
-    ...state,
-    countries,
-    lendingTypes,
-    incomeLevels,
-  }
-}
-
-export function addCountries(state: CountriesState, { countries }) {
-  return {
-    ...state,
-    countries: [...state.countries, ...countries]
-  }
-}
-
-export function setLendingTypes(state, { lendingTypes }) {
-  return {
-    ...state,
-    lendingTypes,
-  }
-}
-
-export function setIncomeLevels(state, { incomeLevels }) {
-  return {
-    ...state,
-    incomeLevels,
-  }
-}
-
-
-export function addCountry(state, { country }) {
+export function addCountry(state: CountryState, { country }) {
   return {
     ...state,
     countries: [...state.countries, country]
   };
 }
+
+export function addCountries(state: CountryState, { countries }) {
+  const storedCountriesIds = state.countries.map(ct => ct.id);
+
+  const newCountries = countries.reduce((list, country) =>
+    storedCountriesIds.includes(country.id) ? list : list.push(country) && list
+    , [])
+
+  return {
+    ...state,
+    countries: [...newCountries, ...state.countries]
+  }
+}
+
+export function setLendingTypes(state: CountryState, { lendingTypes }) {
+  return {
+    ...state,
+    lendingTypes,
+  }
+}
+
+export function setIncomeLevels(state: CountryState, { incomeLevels }) {
+  return {
+    ...state,
+    incomeLevels,
+  }
+}
+
+
+

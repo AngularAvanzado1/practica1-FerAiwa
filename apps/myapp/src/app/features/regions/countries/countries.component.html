@@ -1,31 +1,14 @@
-<h1> Region > Countries </h1>
-<section style="
-         display:flex;
-         width: 100%;
-         flex-flow: row wrap;
-         justify-content: left;
-         align-content: start;
-         background-color: rgba(245, 245, 245, 0.158);
-         border-bottom-left-radius: 2rem;
-         border-top-left-radius: 2rem;
-         max-height: 550px;
-         min-height: 550px;
-          overflow-y: scroll;
-          padding-left: 2.5rem;
-          box-sizing: border-box;
-         ">
-  <ab-ui-region-card *ngFor="let country of countries$ | async"
-                     [routerLink]="['/country', country.id]"
-                     [name]="country.name"
-                     style="
-                     width: 100px;
-                     padding: 0 1rem;
-                     margin: .25rem .25rem; ;
-                     border-radius: 8px;
-                 ">
-    <img src="https://www.countryflags.io/{{country.iso2Code}}/flat/64.png">
-
-  </ab-ui-region-card>
-
-  <router-outlet></router-outlet>
+<section>
+  <header>
+    <h1> Countries </h1>
+  </header>
+  <main>
+    <ab-ui-region-card *ngFor="let country of countries$ | async"
+                       [routerLink]="['/country', country.id]"
+                       [name]="country.name"
+                       class="flag-card">
+      <img src="https://www.countryflags.io/{{country.iso2Code}}/flat/64.png">
+    </ab-ui-region-card>
+    <router-outlet></router-outlet>
+  </main>
 </section>

@@ -1,7 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Region } from '@a-boss/domain';
-import { RegionsState } from './region.reducer';
-
+import { Region, Country } from '@a-boss/domain';
 
 const loadRegions = {
   start: createAction(
@@ -20,22 +18,15 @@ export const loadRegionCountries = {
     '[Regions] Load Region Countries', props<{ code: string }>()
   ),
   success: createAction(
-    '[Regions] Load Region Countries ✔️', props<{ code: string }>()
+    '[Regions] Load Region Countries ✔️', props<{ code: string, countries: Country[] }>()
   )
 }
 
-export const rehydrateFeatureState = {
-  start: createAction(
-    '[Regions] Rehydrate feature State'
-  ),
-  success: createAction(
-    '[Regions] Rehydrate Feature State ✔', props<{ storedState: RegionsState }>()
-  )
-}
+export const addLoadedRegion = createAction(
+  '[Regions] Add loaded region',
+  props<{ code: string }>()
+)
 
-export const selectRegion = createAction(
-  '[Regions] Select Active Region', props<{ code: string }>()
-);
 
 export const loaders = {
   regions: loadRegions,

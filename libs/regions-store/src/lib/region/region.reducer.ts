@@ -3,39 +3,29 @@ import { Region } from '@a-boss/domain';
 import * as RegionActions from './region.actions';
 import * as RegionReducers from './region.action-reducers';
 
-export const regionsFeatureKey = 'region';
-export interface RegionsState {
+export const regionFeatureKey = 'region';
+export interface RegionState {
   regions: Region[],
-  selectedRegion: string,
   loadedRegions: string[]
 }
 
-export const regionInitialState: RegionsState = {
+export const regionInitialState: RegionState = {
   regions: [],
-  selectedRegion: null,
   loadedRegions: [],
 };
 
-const regionsReducer = createReducer(
+const regionReducer = createReducer(
   regionInitialState,
-  on(
-    RegionActions.rehydrateFeatureState.success,
-    RegionReducers.setRegionsState
-  ),
   on(
     RegionActions.loaders.regions.success,
     RegionReducers.addRegions
   ),
   on(
-    RegionActions.loaders.regionCountries.success,
+    RegionActions.addLoadedRegion,
     RegionReducers.addLoadedRegion
-  ),
-  on(
-    RegionActions.selectRegion,
-    RegionReducers.setActiveRegion
   )
 );
 
-export function reducer(state: RegionsState | undefined, action: Action) {
-  return regionsReducer(state, action);
+export function reducer(state: RegionState | undefined, action: Action) {
+  return regionReducer(state, action);
 }

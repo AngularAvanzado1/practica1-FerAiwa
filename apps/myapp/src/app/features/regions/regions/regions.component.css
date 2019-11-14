@@ -5,3 +5,40 @@
   align-items: left ;
   overflow:hidden;
 }
+
+.card {
+  width: 200px;
+  margin: .4rem;
+
+  background-color: whitesmoke;
+  border-radius: 8px;
+  text-align: center;
+  vertical-align: center;
+  cursor: pointer;
+  background-color: #efebda
+}
+
+
+main {
+  display:flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 100%;
+}
+nav {
+  display:flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+nav > * {
+  background-color: white;
+  color: black;
+}
+nav > *:hover {
+  background-color: rgba(236, 236, 236, 0.829);
+}
+nav > *.activatedLink {
+  background-color: rgb(171, 155, 100);
+}

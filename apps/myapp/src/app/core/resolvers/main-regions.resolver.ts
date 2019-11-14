@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
 import { Region } from '@a-boss/domain';
 import { RegionFacadeService } from '@a-boss/regions-store';
+import { take } from 'rxjs/operators';
 
 
 @Injectable({
@@ -14,7 +15,7 @@ export class MainRegionsResolver implements Resolve<Region[]> {
     route: import('@angular/router').ActivatedRouteSnapshot,
     state: import('@angular/router').RouterStateSnapshot
   ) {
-    return this.regionService.getPrimaryRegions()
+    return this.regionService.getPrimaryRegions().pipe(take(1))
   }
 }
 

@@ -1,34 +1,32 @@
 <ng-container *ngIf="country$ | async as country">
-  <p id="breadcumb">
-    <span [routerLink]="['/region', country.region]">{{country.region}}</span> >>
+  <nav>
+    <span [routerLink]="['/region', country.region.code]">{{country.region.name}}</span> >>
     <span>{{country.name}}</span>
-  </p>
-  <div style="display: flex; justify-content: space-between; max-width: 550px;">
-    <h1 style="flex: 1; color:  white;">{{country.name}}</h1>
-    <figure>
-      <img alt="{{country.name}} flag"
-           style="scale:50%"
-           src="https://www.countryflags.io/{{country.iso2Code}}/flat/64.png">
-    </figure>
-  </div>
+  </nav>
+  <span></span>
 
-  <div class="country-card">
-    <div class="map">
-      <iframe width="250"
-              height="250"
-              frameborder="0"
-              style="border:0; border-radius:50%"
-              [src]="getGoogleMapsUrl(country)">
-      </iframe>
-    </div>
-    <div class="country-card-data">
-      <div class="text">
-        <h2>Country Details:</h2>
-        <p> Capital: {{country.capitalCity}}</p>
-        <p>Income Level: {{country.incomeLevel.value}}</p>
-        <p>Lending Type: {{country.lendingType.value}}</p>
-        <p>Capital location: {{country.latitude}}, {{country.longitude}}</p>
-      </div>
-    </div>
-  </div>
+  <ab-ui-article-card>
+    <h1>{{country.name}}</h1>
+    <img alt="{{country.name}} flag"
+         style="transform: scale(.5)"
+         src="https://www.countryflags.io/{{country.iso2Code}}/flat/64.png">
+    <iframe class="art-image"
+            frameborder="0"
+            [src]="getGoogleMapsUrl(country)"
+            class="art-image">
+    </iframe>
+    <h2> Country information:</h2>
+    <ul>
+      <li>Region: <span>{{country.region.name}}</span></li>
+      <li>Capital: <span>{{country.capitalCity}}</span></li>
+      <li>Capital location: <span>{{country.latitude}}, {{country.longitude}}</span></li>
+      <li>Income Level: <span>{{country.incomeLevel}}</span> </li>
+      <li>Lending Type: <span>{{country.lendingType}}</span></li>
+    </ul>
+    <!--     <p> Region: {{country.region.name}}</p>
+    <p> Capital: {{country.capitalCity}}</p>
+    <p> Capital location: {{country.latitude}}, {{country.longitude}}</p>
+    <p> Income Level: {{country.incomeLevel}}</p>
+    <p> Lending Type: {{country.lendingType}}</p> -->
+  </ab-ui-article-card>
 </ng-container>

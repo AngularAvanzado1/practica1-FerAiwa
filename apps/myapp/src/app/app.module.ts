@@ -8,14 +8,13 @@ import { RegionsStoreModule } from '@a-boss/regions-store';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    AppRoutingModule,
     RegionsStoreModule,
   ],
   bootstrap: [AppComponent]

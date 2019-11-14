@@ -12,8 +12,7 @@ export interface Country {
   capitalCity: string;
   longitude: string;
   latitude: string;
-  region: CountryDetail | string;
-  adminRegion: CountryDetail | string;
+  region: Region | string;
   incomeLevel: CountryDetail | string;
   lendingType: CountryDetail | string;
 }

@@ -27,7 +27,9 @@
               },
               "apps/myapp/src/manifest.webmanifest"
             ],
-            "styles": ["apps/myapp/src/styles.css"],
+            "styles": [
+              "apps/myapp/src/styles.css"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -88,7 +90,10 @@
               "apps/myapp/tsconfig.app.json",
               "apps/myapp/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/myapp/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/myapp/**"
+            ]
           }
         },
         "test": {
@@ -122,8 +127,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/myapp-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/myapp-e2e/**"]
+            "tsConfig": [
+              "apps/myapp-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/myapp-e2e/**"
+            ]
           }
         }
       }
@@ -141,14 +151,18 @@
               "libs/shared/data/tsconfig.lib.json",
               "libs/shared/data/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/shared/data/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/data/**"
+            ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/data/jest.config.js",
-            "tsConfig": "libs/shared/data/tsconfig.spec.json"
+            "tsConfig": "libs/shared/data/tsconfig.spec.json",
+            "setupFile": "libs/shared/data/src/test-setup.ts"
           }
         }
       }
@@ -166,7 +180,10 @@
               "libs/shared/domain/tsconfig.lib.json",
               "libs/shared/domain/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/shared/domain/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/domain/**"
+            ]
           }
         },
         "test": {
@@ -191,7 +208,10 @@
               "libs/shared/ui/tsconfig.lib.json",
               "libs/shared/ui/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/shared/ui/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/shared/ui/**"
+            ]
           }
         },
         "test": {
@@ -218,7 +238,10 @@
               "libs/regions-store/tsconfig.lib.json",
               "libs/regions-store/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/regions-store/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/regions-store/**"
+            ]
           }
         },
         "test": {

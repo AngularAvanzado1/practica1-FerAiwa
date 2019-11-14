@@ -1,32 +1,16 @@
-import { RegionsState } from './region.reducer';
+import { RegionState } from './region.reducer';
 
-export function setRegionsState(state: RegionsState, { storedState }): RegionsState {
-  return {
-    ...state,
-    regions: storedState.regions,
-    selectedRegion: storedState.selectedRegion,
-    loadedRegions: [...storedState.loadedRegions]
-  }
-}
-
-export function addRegions(state: RegionsState, { regions }): RegionsState {
+export function addRegions(state: RegionState, { regions }) {
   return {
     ...state,
     regions: [...state.regions, ...regions]
   }
 }
 
-export function addLoadedRegion(state: RegionsState, { code }): RegionsState {
+export function addLoadedRegion(state: RegionState, { code }) {
   return {
     ...state,
     loadedRegions: [...state.loadedRegions, code]
-  }
-}
-
-export function setActiveRegion(state, { code }): RegionsState {
-  return {
-    ...state,
-    selectedRegion: code
   }
 }
 

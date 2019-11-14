@@ -5,33 +5,32 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { WorldRegionsDataService } from '@a-boss/data';
+import { AppEffects } from './region-store.effects';
+import { RegionFacadeService } from './region.service';
 import { CountryStoreModule } from './country/country.module';
 import { RegionStoreModule } from './region/region.module';
-import { CountriesState } from './country/country.reducer';
-import { RegionsState } from './region/region.reducer';
-import { RegionFacadeService } from './region.service';
+import { RegionState } from './region/region.reducer';
+import { CountryState } from './country/country.reducer';
 
 export interface AppState {
-  country: CountriesState,
-  region: RegionsState
+  region: RegionState,
+  country: CountryState,
 }
 
 @NgModule({
   imports: [
     CommonModule,
-    StoreModule.forRoot(
-      {},
+    StoreModule.forRoot({},
       {
         runtimeChecks: {
           strictActionImmutability: true,
           strictStateImmutability: true
         }
       }
-    ), EffectsModule.forRoot([]),
-    StoreDevtoolsModule.instrument({
-      maxAge: 25,
-    }),
-    //StoreRoutingConectingModule.forRoot({ routerState: RouterState.minimal })
+    ),
+    EffectsModule.forRoot([AppEffects]),
+    StoreDevtoolsModule.instrument({ maxAge: 25 }),
+    //StoreRoutingConectingModule.forRoot({ routerState: RouterState.minimal }),
     RegionStoreModule,
     CountryStoreModule,
   ],
