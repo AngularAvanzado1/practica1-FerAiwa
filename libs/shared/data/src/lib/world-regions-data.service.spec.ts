@@ -26,11 +26,11 @@ describe('GIVEN: A WorldRegionDataService', () => {
     });
 
     it('THEN: should return a observable when calling .getAllRegions()', () => {
-      expect(service.getAllRegions()).toBeInstanceOf(Observable)
+      expect(service.getRegions()).toBeInstanceOf(Observable)
     })
 
     it('THEN: should emit a list of regions when calling .getAllRegions()', () => {
-      service.getAllRegions().subscribe(regions =>
+      service.getRegions().subscribe(regions =>
         expect(regions).toBe((mockRegions))
       )
     })
