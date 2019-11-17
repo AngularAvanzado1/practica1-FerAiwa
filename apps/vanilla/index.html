@@ -34,12 +34,10 @@
     <script>
       function loadSelectedCountry(customEvent) {
         const { detail: countryId } = customEvent;
-        document.querySelector('wbc-country')
-          .setAttribute('id', countryId);
+        document.querySelector('wbc-country').setAttribute('id', countryId);
       };
 
-      document.querySelector('wbc-country-searcher')
-        .addEventListener('selectedCountry', loadSelectedCountry);
+      document.querySelector('wbc-country-searcher').addEventListener('selectedCountry', loadSelectedCountry);
     </script>
   </body>
 

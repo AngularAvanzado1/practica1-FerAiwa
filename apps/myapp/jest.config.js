@@ -3,7 +3,7 @@ module.exports = {
   preset: '../../jest.config.js',
   coverageDirectory: '../../coverage/apps/myapp',
   snapshotSerializers: [
-    'jest-preset-angular/build/AngularSnapshotSerializer.js',
-    'jest-preset-angular/build/HTMLCommentSerializer.js'
+    'jest-preset-angular/AngularSnapshotSerializer',
+    'jest-preset-angular/HTMLCommentSerializer'
   ],
 };

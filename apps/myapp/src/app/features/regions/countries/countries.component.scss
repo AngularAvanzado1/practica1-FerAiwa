@@ -1,28 +1,25 @@
-/* :host {
+:host {
   display: block;
-  width: 100%;
 }
- */
+
 :host {
   display: flex;
   flex-direction: column;
-  width: 90%;
   overflow-y: hidden;
-  min-height: 525px;
+  height: 525px;
   box-sizing: border-box;
   padding: 1rem;
 }
 
 main {
   display:flex;
-  width: 100%;
   flex-flow: row wrap;
   justify-content: left;
   align-content: start;
-  background-color: rgba(245, 245, 245, 0.158);
+  background-color: rgba(245, 245, 245, 0.658);
   border-bottom-left-radius: 2rem;
   border-top-left-radius: 2rem;
-  max-height: 550px;
+  width: 850px;
   min-height: 550px;
   overflow-y: scroll;
   padding-left: 2.5rem;
@@ -42,6 +39,8 @@ main::-webkit-scrollbar-thumb {
 h1 {
   border-bottom: 1px dotted lightgrey;
   color: white;
+  text-shadow: 2px 1px 2px black;
+  font-size: 2rem;
 }
 
 .flag-card {
