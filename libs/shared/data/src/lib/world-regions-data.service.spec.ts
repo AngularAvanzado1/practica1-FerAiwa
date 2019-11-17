@@ -3,7 +3,6 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { WorldRegionsDataService } from './world-regions-data.service';
 import { Observable } from 'rxjs';
-import { HttpClientModule } from '@angular/common/http';
 
 describe('GIVEN: A WorldRegionDataService', () => {
 
@@ -50,11 +49,5 @@ describe('GIVEN: A WorldRegionDataService', () => {
     it('THEN: should return a observable when calling .getLendingTypes()', () => {
       expect(service.getLendingTypes()).toBeInstanceOf(Observable)
     })
-
-
-    /*     it('THEN: should return a mapped ietm that replaces nested objects for its entity key', () => {
-        }) */
-
-
   })
 });

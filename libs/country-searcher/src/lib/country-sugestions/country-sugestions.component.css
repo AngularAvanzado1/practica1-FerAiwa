@@ -1,0 +1,21 @@
+li:hover {
+  background-color: orange;
+  cursor: pointer;
+  -moz-user-select: none;
+}
+li:active {
+  background-color: orange;
+}
+li {
+  list-style: none
+}
+
+ul {
+  margin: 0;
+  padding: .25rem;
+  background-color: white;
+  min-width: 2;
+  width: 230px;
+  height: 250px;
+  overflow-y: scroll;
+}

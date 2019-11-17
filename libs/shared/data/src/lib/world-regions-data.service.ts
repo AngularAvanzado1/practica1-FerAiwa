@@ -35,16 +35,21 @@ export class WorldRegionsDataService {
       .pipe(map((res) => this.mapIDsFromNestedEntities(res)))
 
   public getIncomeLevels = (): Observable<CountryDetail[]> =>
-    this.get(`${this.apiUrl}/incomeLevels`)
+    this.get(`${this.apiUrl}/incomeLevels`);
 
   public getLendingTypes = (): Observable<CountryDetail[]> =>
-    this.get(`${this.apiUrl}/lendingTypes`)
+    this.get(`${this.apiUrl}/lendingTypes`);
 
+  public getCountrySimpleList = (): Observable<any[]> =>
+    this.get(`${this.apiUrl}/country`)
+      .pipe(map(res => this.filterCountryNameAndId(res)))
 
   private get = (endpoint: string): Observable<any> =>
     this.http
       .get<any>(endpoint, { params: this.params })
       .pipe(this.filterDataOnly)
+
+
 
 
   set config({ format, perPage }) {
@@ -78,6 +83,13 @@ export class WorldRegionsDataService {
     )
 
     return mappedCollection;
+  }
+
+  filterCountryNameAndId = (collection: Country[]): any[] => {
+    return collection.reduce((acc, country) => {
+      const { id, name, capitalCity } = country;
+      return capitalCity ? acc.push({ id, name }) && acc : acc;
+    }, [])
   }
 
 }

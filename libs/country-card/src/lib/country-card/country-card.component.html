@@ -1,0 +1,25 @@
+<ab-ui-article-card *ngIf="country">
+  <h1>{{country.name}}</h1>
+  <img *ngIf="showFlag"
+       alt="{{country.name}} flag"
+       style="transform: scale(.5)"
+       src="https://www.countryflags.io/{{country.iso2Code}}/flat/64.png">
+  <h2> Country information:</h2>
+  <ul>
+    <li>
+      Region: <span>{{country.name}}</span>
+    </li>
+    <li>
+      Capital: <span>{{country.capitalCity}}</span>
+    </li>
+    <li>
+      Capital location: <span>{{country.latitude}}, {{country.longitude}}</span>
+    </li>
+    <li>
+      Income Level: <span>{{country.incomeLevel}}</span>
+    </li>
+    <li>
+      Lending Type: <span>{{country.lendingType}}</span>
+    </li>
+  </ul>
+</ab-ui-article-card>

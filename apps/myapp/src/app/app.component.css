@@ -9,15 +9,19 @@ main {
   background-blend-mode: luminosity;
   background-color: #ffffff87;
   background-size: cover;
-  max-width: 1400px;
+/*   max-width: 1400px;
+ */}
+
+h1 {
+  flex: 1;
+  color: white;
 }
-/*     .flex-hero {
-      flex:2;
-    } */
-
-    @media(min-width: 1400px) {
-      main {
-        margin: 0 auto;
-
-      }
-    }
+@media(min-width: 1400px) {
+  main {
+    margin: 0 auto;
+  }
+}
+footer {
+  text-align: center;
+  color: white;
+}

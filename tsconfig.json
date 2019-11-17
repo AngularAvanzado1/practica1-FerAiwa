@@ -32,6 +32,12 @@
       ],
       "@a-boss/regions-store": [
         "libs/regions-store/src/index.ts"
+      ],
+      "@a-boss/country-card": [
+        "libs/country-card/src/index.ts"
+      ],
+      "@a-boss/country-searcher": [
+        "libs/country-searcher/src/index.ts"
       ]
     }
   },

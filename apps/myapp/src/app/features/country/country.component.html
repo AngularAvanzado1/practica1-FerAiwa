@@ -3,7 +3,6 @@
     <span [routerLink]="['/region', country.region.code]">{{country.region.name}}</span> >>
     <span>{{country.name}}</span>
   </nav>
-  <span></span>
 
   <ab-ui-article-card>
     <h1>{{country.name}}</h1>
@@ -15,18 +14,13 @@
             [src]="getGoogleMapsUrl(country)"
             class="art-image">
     </iframe>
-    <h2> Country information:</h2>
+    <h2 i18n> Country information:</h2>
     <ul>
-      <li>Region: <span>{{country.region.name}}</span></li>
-      <li>Capital: <span>{{country.capitalCity}}</span></li>
-      <li>Capital location: <span>{{country.latitude}}, {{country.longitude}}</span></li>
-      <li>Income Level: <span>{{country.incomeLevel}}</span> </li>
-      <li>Lending Type: <span>{{country.lendingType}}</span></li>
+      <li i18n>Region: <span>{{country.region.name}}</span></li>
+      <li i18n>Capital: <span>{{country.capitalCity}}</span></li>
+      <li i18n>Capital location: <span>{{country.latitude}}, {{country.longitude}}</span></li>
+      <li i18n>Income Level: <span>{{country.incomeLevel}}</span> </li>
+      <li i18n>Lending Type: <span>{{country.lendingType}}</span></li>
     </ul>
-    <!--     <p> Region: {{country.region.name}}</p>
-    <p> Capital: {{country.capitalCity}}</p>
-    <p> Capital location: {{country.latitude}}, {{country.longitude}}</p>
-    <p> Income Level: {{country.incomeLevel}}</p>
-    <p> Lending Type: {{country.lendingType}}</p> -->
   </ab-ui-article-card>
 </ng-container>

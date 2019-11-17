@@ -11,7 +11,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/browser",
+            "outputPath": "dist/apps/myapp",
             "index": "apps/myapp/src/index.html",
             "main": "apps/myapp/src/main.ts",
             "polyfills": "apps/myapp/src/polyfills.ts",
@@ -19,18 +19,22 @@
             "aot": false,
             "assets": [
               "apps/myapp/src/favicon.ico",
+              "apps/myapp/src/manifest.webmanifest",
               "apps/myapp/src/assets",
               {
                 "glob": "**/*",
                 "input": "./libs/shared/ui/src/assets",
                 "output": "./assets"
-              },
-              "apps/myapp/src/manifest.webmanifest"
+              }
             ],
             "styles": [
               "apps/myapp/src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              {
+                "input": "node_modules/document-register-element/build/document-register-element.js"
+              }
+            ]
           },
           "configurations": {
             "production": {
@@ -63,6 +67,40 @@
               ],
               "serviceWorker": true,
               "ngswConfigPath": "apps/myapp/ngsw-config.json"
+            },
+            "production-es": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/myapp/src/environments/environment.ts",
+                  "with": "apps/myapp/src/environments/environment.prod.es.ts"
+                }
+              ],
+              "outputPath": "dist/apps/myapp/es/",
+              "i18nFile": "apps/myapp/src/locale/messages.es.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "es",
+              "baseHref": "es",
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
             }
           }
         },
@@ -277,6 +315,167 @@
         }
       },
       "schematics": {}
+    },
+    "country-card": {
+      "projectType": "library",
+      "root": "libs/country-card",
+      "sourceRoot": "libs/country-card/src",
+      "prefix": "angular-boss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/country-card/tsconfig.lib.json",
+              "libs/country-card/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/country-card/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/country-card/jest.config.js",
+            "tsConfig": "libs/country-card/tsconfig.spec.json",
+            "setupFile": "libs/country-card/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "country-searcher": {
+      "projectType": "library",
+      "root": "libs/country-searcher",
+      "sourceRoot": "libs/country-searcher/src",
+      "prefix": "angular-boss",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/country-searcher/tsconfig.lib.json",
+              "libs/country-searcher/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/country-searcher/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/country-searcher/jest.config.js",
+            "tsConfig": "libs/country-searcher/tsconfig.spec.json",
+            "setupFile": "libs/country-searcher/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {}
+    },
+    "external-country": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "apps/external-country",
+      "sourceRoot": "apps/external-country/src",
+      "prefix": "angular-boss",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/apps/external-country",
+            "index": "apps/external-country/src/index.html",
+            "main": "apps/external-country/src/main.ts",
+            "polyfills": "apps/external-country/src/polyfills.ts",
+            "tsConfig": "apps/external-country/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "apps/external-country/src/favicon.ico",
+              "apps/external-country/src/assets"
+            ],
+            "styles": [
+              "apps/external-country/src/styles.css"
+            ],
+            "scripts": [
+              {
+                "bundleName": "polyfill-webcomp-es5",
+                "input": "node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"
+              },
+              {
+                "bundleName": "polyfill-webcomp",
+                "input": "node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce-pf.js"
+              }
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/external-country/src/environments/environment.ts",
+                  "with": "apps/external-country/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "none",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "ngx-build-plus:dev-server",
+          "options": {
+            "browserTarget": "external-country:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "external-country:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "external-country:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/external-country/tsconfig.app.json",
+              "apps/external-country/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/external-country/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "ngx-build-plus:karma",
+          "options": {
+            "jestConfig": "apps/external-country/jest.config.js",
+            "tsConfig": "apps/external-country/tsconfig.spec.json",
+            "setupFile": "apps/external-country/src/test-setup.ts"
+          }
+        }
+      }
     }
   },
   "cli": {

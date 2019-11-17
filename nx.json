@@ -25,6 +25,27 @@
     },
     "regions-store": {
       "tags": []
+    },
+    "region-card": {
+      "tags": []
+    },
+    "country-card": {
+      "tags": []
+    },
+    "country-searcher": {
+      "tags": []
+    },
+    "external-country-e2e": {
+      "tags": []
+    },
+    "external-country": {
+      "tags": []
+    },
+    "external-country-searcher-e2e": {
+      "tags": []
+    },
+    "external-country-searcher": {
+      "tags": []
     }
   }
 }

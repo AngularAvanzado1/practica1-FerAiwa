@@ -6,7 +6,6 @@ export const getCountryExtended = createSelector(
   RegionSelectors.getRegions,
   CountrySelectors.getCountry,
   (regions, country, props) => {
-    console.log('country extended', country);
     if (!country) return
 
     return {

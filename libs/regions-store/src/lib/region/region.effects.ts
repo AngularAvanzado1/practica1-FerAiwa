@@ -54,8 +54,4 @@ export class RegionEffects implements OnInitEffects {
     private actions$: Actions,
     private regionsApiService: WorldRegionsDataService
   ) { }
-
-
-
-
 }

@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+import { CountryResolver } from './resolvers/country.resolver';
+import { MainRegionsResolver } from './resolvers/main-regions.resolver';
 
-import { CountryResolver } from './core/resolvers/country.resolver';
-import { MainRegionsResolver } from './core/resolvers/main-regions.resolver';
-//todo: layout component
 const routes: Routes = [
   {
     path: '',
@@ -22,7 +21,7 @@ const routes: Routes = [
     path: 'country/:id',
     loadChildren: () => import('./features/country/country.module').then(m => m.CountryModule),
     resolve: {
-      country: CountryResolver
+      country: CountryResolver,
     }
   }
 ];

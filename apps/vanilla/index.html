@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>Vanilla JS WebComponents</title>
+    <base href="/apps/vanilla/" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1" />
+    <link rel="icon"
+          type="image/x-icon"
+          href="favicon.ico" />
+    <link href="styles.css"
+          rel="stylesheet" />
+  </head>
+
+  <body>
+    <section>
+      <header>
+        <h1>Vanilla JS ❤️ WebComponents: A love story </h1>
+        <p>Example of webcomponents created with Angular & consumed in vanilla</p>
+      </header>
+      <div>
+        <wbc-country-searcher></wbc-country-searcher>
+        <wbc-country></wbc-country>
+      </div>
+    </section>
+
+    <script src="main-es2015.js"
+            type="module"></script>
+    <script src="main-es5.js"
+            nomodule
+            defer></script>
+    <script>
+      function loadSelectedCountry(customEvent) {
+        const { detail: countryId } = customEvent;
+        document.querySelector('wbc-country')
+          .setAttribute('id', countryId);
+      };
+
+      document.querySelector('wbc-country-searcher')
+        .addEventListener('selectedCountry', loadSelectedCountry);
+    </script>
+  </body>
+
+</html>

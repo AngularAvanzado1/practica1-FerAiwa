@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { pluck, tap } from 'rxjs/operators';
+import { pluck } from 'rxjs/operators';
 
 @Component({
   selector: 'ab-regions',

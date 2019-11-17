@@ -30,7 +30,6 @@ export interface AppState {
     ),
     EffectsModule.forRoot([AppEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25 }),
-    //StoreRoutingConectingModule.forRoot({ routerState: RouterState.minimal }),
     RegionStoreModule,
     CountryStoreModule,
   ],

@@ -15,8 +15,8 @@ const routes: Routes = [
   declarations: [CountryComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes),
     UiModule,
+    RouterModule.forChild(routes),
   ]
 })
 export class CountryModule { }

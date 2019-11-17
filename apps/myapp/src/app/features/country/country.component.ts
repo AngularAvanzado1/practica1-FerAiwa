@@ -1,9 +1,9 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { pluck } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Country } from '@a-boss/domain';
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'angular-boss-country',

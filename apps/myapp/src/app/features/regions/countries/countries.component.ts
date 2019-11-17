@@ -5,7 +5,7 @@ import { pluck, tap, map } from 'rxjs/operators';
 @Component({
   selector: 'ab-countries',
   templateUrl: './countries.component.html',
-  styleUrls: ['./countries.component.css'],
+  styleUrls: ['./countries.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CountriesComponent {
