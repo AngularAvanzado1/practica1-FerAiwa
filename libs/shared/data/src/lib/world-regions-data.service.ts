@@ -44,7 +44,7 @@ export class WorldRegionsDataService {
     this.get(`${this.apiUrl}/country`)
       .pipe(map(res => this.filterCountryNameAndId(res)))
 
-  private get = (endpoint: string): Observable<any> =>
+  public get = (endpoint: string): Observable<any> =>
     this.http
       .get<any>(endpoint, { params: this.params })
       .pipe(this.filterDataOnly)
